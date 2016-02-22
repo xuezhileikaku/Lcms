@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>管理后台</title>
+        <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+    <load file="__PUBLIC__/css/bootstrap.min.css" />
+    <load file="__PUBLIC__/css/bootstrap-responsive.css" />
+    <load file="__PUBLIC__/css/theme.css" /> 
+    <load file="__PUBLIC__/css/font-awesome.css" />
+    <load file="__PUBLIC__/calendar/need/laydate.css"/>
+    <load file="__PUBLIC__/calendar/skins/molv/laydate.css"/> 
+    <load file="__PUBLIC__/js/jquery.min.js"/>
+    <load file="__PUBLIC__/calendar/laydate.js"/>
+
+    <!-- Demo page code -->    
+    <style type="text/css">
+        #line-chart {
+            height:300px;
+            width:800px;
+            margin: 0px auto;
+            margin-top: 1em;
+        }
+        .brand { font-family: georgia, serif; }
+        .brand .first {
+            color: #ccc;
+            font-style: italic;
+        }
+        .brand .second {
+            color: #fff;
+            font-weight: bold;
+        }
+    </style>
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="javascripts/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="__APP__/imgs/favicon.ico">
+
+</head>
+
+<!--[if lt IE 7 ]> <body class="ie ie6"> <![endif]-->
+<!--[if IE 7 ]> <body class="ie ie7"> <![endif]-->
+<!--[if IE 8 ]> <body class="ie ie8"> <![endif]-->
+<!--[if IE 9 ]> <body class="ie ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> 
+<include file="Public/menu" />
+<include file="Public/side" />
+<script>
+    $(function () {
+        $("#add").hide();
+        $("#btn").click(function () {
+            $("#add").show();
+        });
+    });
+</script>
+<div class="span9">
+    <h2>{$cou}</h2>
+    <div class="row-fluid">
+        <div class="block">
+            <p class="block-heading" data-toggle="collapse" data-target="#chart-container"><a href='__APP__/index.php/Admin/Course/index'>课程</a>-》<a href="__APP__/index.php/Admin/Chapter/index/co/{$cho.co}">章</a>-》模块管理
+                 <a id="btn" style="float: right;" href="__APP__/index.php/Admin/Modu/add/co/{$cho.co}/ch/{$cho.ch}">添加模块</a> 
+            </p>
+            <div id="chart-container" class="block-body collapse in">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>序号</th>
+                            <td>模块</td>
+                            <td>负责人</td>
+                            <td>完成状态</td>
+                            <td>开始时间</td>
+                             <td>当前进度</td>
+                            <td>结束时间</td>
+                            <td>操作</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                       
+                    <volist name="mo" id="m" key='k'>
+                        <tr>
+                            <td style="width: 8%;">模块{$k}</td>
+                            <td style="width: 15%;">{$m.mo_name}</td>
+                            <td>{$m.mo_manager}</td>
+                            <td>
+                                {$m.mo_stats}
+                            </td>
+                            <td style="width: 15%;">{$m.mo_time_s}</td>
+                            <td style="width: 15%;">{$m.mo_pro}%</td>
+                            <td style="width: 15%;">{$m.mo_time_e}</td>
+                            <td><a href="__APP__/index.php/Admin/Modu/edt/id/{$m.mo_id}">编辑</a>&nbsp;&nbsp;
+                                <a  href="__APP__/index.php/Admin/Modu/del/id/{$m.mo_id}">删除</a></td>
+                        </tr>
+                    </volist>
+                    </tbody>
+                </table>
+                <script>
+                    //日期范围限制
+                    var start = {
+                        elem: '#start',
+                        format: 'YYYY-MM-DD',
+                        min: laydate.now(), //设定最小日期为当前日期
+                        max: '2099-06-16', //最大日期
+                        istime: true,
+                        istoday: false,
+                        choose: function (datas) {
+                            end.min = datas; //开始日选好后，重置结束日的最小日期
+                            end.start = datas //将结束日的初始值设定为开始日
+                        }
+                    };
+
+                    var end = {
+                        elem: '#end',
+                        format: 'YYYY-MM-DD',
+                        min: laydate.now(),
+                        max: '2099-06-16',
+                        istime: true,
+                        istoday: false,
+                        choose: function (datas) {
+                            start.max = datas; //结束日选好后，充值开始日的最大日期
+                        }
+                    };
+                    laydate(start);
+                    laydate(end);
+
+                </script>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<include file="Public/foot" />

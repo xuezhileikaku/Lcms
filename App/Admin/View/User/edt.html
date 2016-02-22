@@ -1,0 +1,50 @@
+<include file="Public/head" />
+<include file="Public/menu" />
+<include file="Public/side" />
+
+<div class="span9">
+    <h1 class="page-title">人员管理</h1>
+    <div class="row-fluid">
+        <div class="block">
+            <p class="block-heading" data-toggle="collapse" data-target="#chart-container">添加人员</p>
+            <div id="chart-container" class="block-body collapse in">
+                <div class="form-group">
+                    <form action="__APP__/index.php/Admin/User/up" method="post">
+                        <br/>姓名：
+                        <input type="text" name="u_real_name" value="{$user.u_real_name}"  class="form-control"  />
+                        &nbsp;&nbsp;&nbsp; &nbsp;
+                        部门：
+                        <select name="u_cat">
+                            <option value="{$user.u_cat}">请选择</option>
+                            <volist name="up" id="u" key="k">
+                                <option value="{$u.cat_id}">{$u.cat_name}</option>
+                            </volist>
+                        </select>
+                       <br/>
+                       账号：
+                        <input type="text" name="u_name" class="form-control" value="{$user.u_name}" />
+                     &nbsp;&nbsp;&nbsp; &nbsp;
+                     管理角色：
+                     <select class="" name="u_role">
+                       <option value="admin">管理员</option>
+                       <option value="course">课程负责人</option>
+                       <option value="modu">模块编辑</option>
+                       <option value="scan">浏览者</option>
+                     </select>
+                      <br/>
+                      邮箱：
+                       <input type="text" name="u_email" class="form-control"  value="{$user.u_email}"   />
+                      &nbsp;&nbsp;&nbsp; &nbsp;
+                      电话：
+                        <input type="text" name="u_tel" class="form-control"  value="{$user.u_tel}"  />
+                         &nbsp;&nbsp;&nbsp; &nbsp; qq:
+                        <input type="text" name="u_qq" class="form-control"   value="{$user.u_qq}"  /><br/>
+                        <input type="hidden" name="id" value="{$user.u_id}"/>
+                        <input type="submit" value="提交"/>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<include file="Public/foot" />

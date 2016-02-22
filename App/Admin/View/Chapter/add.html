@@ -1,0 +1,30 @@
+<include file="Public/head"/>
+<include file="Public/menu" />
+<include file="Public/side" />
+<div class="span9">
+    <h2>{$cou}</h2>
+    <div class="row-fluid">
+        <div class="block">
+            <p class="block-heading" data-toggle="collapse" data-target="#chart-container"><a href='__APP__/index.php/Admin/Course/index'>课程</a>-》添加
+            </p>
+            <div id="chart-container" class="block-body collapse in">
+                <form action='__APP__/index.php/Admin/Chapter/addUp' method='post'>
+                    <div>
+                        <h3>
+                            第&nbsp;<input name="ch_num" style="width: 4%;"  placeholder="几" value="{$ch.ch_num}"  /> 章&nbsp;&nbsp;&nbsp;&nbsp;<input name="ch_name" value="{$ch.ch_name}"  placeholder='请输入章节名称'/><br/>
+                        </h3>
+                        <input type='hidden' name='co_id' value="<?php echo $_GET['co'];?>"/>
+                       <input type="submit" value="提交" />
+                    </div>
+                </form>  
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+<include file="Public/foot" />
+
+
+

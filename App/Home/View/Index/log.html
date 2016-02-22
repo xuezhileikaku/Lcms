@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html lang="en" class="ie6 ielt7 ielt8 ielt9"><![endif]--><!--[if IE 7 ]><html lang="en" class="ie7 ielt8 ielt9"><![endif]--><!--[if IE 8 ]><html lang="en" class="ie8 ielt9"><![endif]--><!--[if IE 9 ]><html lang="en" class="ie9"> <![endif]--><!--[if (gt IE 9)|!(IE)]><!--> 
+<html lang="en"><!--<![endif]--> 
+    <head>
+        <meta charset="utf-8">
+        <title>文华在线产品事业部管理系统</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <load file="__PUBLIC__/css/bootstrap.min.css"/>
+    <load file="__PUBLIC__/css/bootstrap-responsive.min.css"/>
+    <load file="__PUBLIC__/css/theme.css"/>
+    <load file="__PUBLIC__/css/font-awesome.css"/>
+    <link rel="shortcut icon" href="__PUBLIC__/favicon.ico" />
+
+
+    <script src="lib/jquery-1.8.1.min.js" type="text/javascript"></script>
+
+    <!-- Demo page code -->
+
+    <style type="text/css">
+        #line-chart {
+            height:300px;
+            width:800px;
+            margin: 0px auto;
+            margin-top: 1em;
+        }
+        .brand { font-family: georgia, serif; }
+        .brand .first {
+            color: #ccc;
+            font-style: italic;
+        }
+        .brand .second {
+            color: #fff;
+            font-weight: bold;
+        }
+    </style>
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    
+  </head>
+
+    <!--[if lt IE 7 ]> <body class="ie ie6"> <![endif]-->
+    <!--[if IE 7 ]> <body class="ie ie7"> <![endif]-->
+    <!--[if IE 8 ]> <body class="ie ie8"> <![endif]-->
+    <!--[if IE 9 ]> <body class="ie ie9"> <![endif]-->
+    <!--[if (gt IE 9)|!(IE)]><!--> 
+    <body> 
+        <!--<![endif]-->
+
+        <div class="navbar">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+                    <ul class="nav pull-right">
+
+                    </ul>
+                    <a class="brand" href="http://www.ulearning.cn/"><span class="second">文华在线</span></a>
+                    <a class="brand" href="__APP__/index.php"><span class="second">首页</span></a>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="dialog span4">
+                    <div class="block">
+                        <div class="block-heading">登录</div>
+                        <div class="block-body">
+                            <form action="__APP__/index.php/Home/User/log" method="post">
+                                <label>用户名</label>
+                                <input type="text" name="name" class="span12">
+                                <label>密码</label>
+                                <input type="password" name="pwd" class="span12">
+                                <button type="submit" class="btn btn-primary pull-right">登录</button>
+                                <label class="remember-me"><input type="checkbox"> 记住我</label>
+                                <div class="clearfix"></div>
+                            </form>
+                        </div>
+                    </div>
+                    <p><a href="__APP__/index.php/Admin/User/reset">忘记密码?</a></p>
+                </div>
+            </div>
+            <!-- Le javascript
+            ================================================== -->
+            <!-- Placed at the end of the document so the pages load faster -->
+            <script src="lib/bootstrap/js/bootstrap.js"></script>
+    </body>
+</html>
+
+

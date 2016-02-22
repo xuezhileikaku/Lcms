@@ -1,0 +1,42 @@
+<include file="Public/head" />
+<include file="Public/menu" />
+<include file="Public/side" />
+<script>
+    $(function () {
+        $('#add').hide();
+        $('#btn').click(function () {
+            $('#add').show();
+        });
+    });
+</script>
+<div class="span9">
+    <h1 class="page-title">学科分类</h1>
+    <div class="row-fluid">
+        <p class="block-heading" data-toggle="collapse" data-target="#chart-container " align="center">学科列表<span style="float: right;"><a href="__APP__/index.php/Admin/Cat/add">添加学科</a></span></p>
+        <div id="chart-container" class="block-body collapse in">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>编号</th>
+                        <td>名称</td>
+                        <td>描述</td>
+                        <td>模块</td>
+                        <td>操作</td>
+                    </tr>
+                </thead>
+                <tbody>
+                <volist name="ca" id="c" key="k">
+                    <tr>
+                        <td>{$k}</td>
+                        <td>{$c.name}</td>
+                        <td>{$c.intro}</td>
+                        <td>{$c.}</td>
+                        <td><a href="__APP__/index.php/Admin/Cat/edt/id/{$c.id}">编辑</a>&nbsp;&nbsp;<a  href="__APP__/index.php/Admin/Cat/del/id/{$c.id}">删除</a></td>
+                    </tr>
+                </volist>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<include file="Public/foot" />

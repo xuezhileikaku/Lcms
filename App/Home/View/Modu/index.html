@@ -1,0 +1,48 @@
+<include file="Pub/head" />
+<include file="Pub/menu" />
+<div class="span9">
+    <h2 align="center">
+        {$cou.name}
+    </h2>
+    <div>
+        <h3>章节列表</h3>
+        
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>编号</th>
+                    <td>名称</td>
+
+                    <td>开始时间</td>
+                    <td>当前进度</td>
+
+                    <td>操作</td>
+                </tr>
+            </thead>
+            <tbody>
+            <volist name="ch" id="c" key="k">
+                <tr>
+                    <td>{$k}</td>
+                    <td>{$c.name}</td>
+                    <td>{$c.time_s}</td>
+                    <td>{$c.pro}%</td>
+                    <td><a href="__APP__/index.php/Admin/Chapter/edt/co/{$cou.id}/ch/{$c.id}">更新进度</a>&nbsp;&nbsp;&nbsp;&nbsp;<a  href="__APP__/index.php/Home/Modu/index/co/{$cou.id}/ch/{$c.id}">详细</a></td>
+                </tr>
+            </volist>
+        </table>
+        {$data}
+    </div>
+
+    <ul class="pager">
+        <li class="next">
+            <a href="activity.htm">More &rarr;</a>
+        </li>
+    </ul>
+    <ul class="pager">
+        <li class="center">
+            <a href="http://www.ulearn.cn/" target="_blank">优学院</a> <a href="http://www.ulearning.com.cn/" title="文华在线" target="_blank">文华在线</a>
+        </li>
+    </ul>
+</div>
+<include file="Pub/side" />
+<include file="Pub/foot" />

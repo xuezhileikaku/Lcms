@@ -1,0 +1,48 @@
+<include file="Public/head" />
+<include file="Public/menu" />
+<include file="Public/side" />
+
+<div class="span9">
+    <h1 class="page-title">课程管理</h1>
+    <div class="row-fluid">
+        <div class="block">
+            <p class="block-heading" data-toggle="collapse" data-target="#chart-container" align="center">课程列表 <span style="float: right;"><a href="__APP__/index.php/Admin/Course/add">添加课程</a></span></p>
+            <div id="chart-container" class="block-body collapse in" >
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>编号</th>
+                            <td>名称</td>
+                            <td>类型</td>
+                            <td>负责人</td>
+                            <td>建课时间</td>
+                             <td>当前进度</td>
+                            <td>计划截止时间</td>
+                            <td>操作</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <volist name="co" id="c" key="k">
+
+                        <tr>
+                            <td>{$k}</td>
+                            <td>{$c.co_name}</td>
+                            <td>{$c.co_type}</td>
+                            <td>{$c.co_manager}</td>
+                            <td>{$c.co_time_s}</td>
+                            <td>{$c.co_process}%</td>
+                            <td>{$c.co_time_e}</td>
+                            <td><a href="__APP__/index.php/Admin/Course/edt/co/{$c.co_id}">编辑</a>&nbsp;&nbsp;<a  href="__APP__/index.php/Admin/Course/del/co/{$c.co_id}">删除</a>&nbsp;&nbsp;<a  href="__APP__/index.php/Admin/Chapter/index/co/{$c.co_id}">详细</a>&nbsp;&nbsp;<a href="__APP__/index.php/Admin/Pack/index/co/{$c.co_id}">打包课程</a></td>
+                        </tr>
+                    </volist>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+<include file="Public/foot" />

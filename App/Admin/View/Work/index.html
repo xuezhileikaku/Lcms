@@ -1,0 +1,49 @@
+<include file="Public/head" />
+<include file="Public/menu" />
+<include file="Public/side" />
+
+<div class="span9">
+    <h1 class="page-title">周工作统计</h1>
+    <div class="row-fluid">
+        <div class="block">
+            <p class="block-heading" data-toggle="collapse" data-target="#chart-container" align="center">课程列表 <span style="float: right;"></p>
+            <div id="chart-container" class="block-body collapse in">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>编号</th>
+                            <td>人员</td>
+                            <td>计划耗时</td>
+                            <td>实际耗时</td>
+                             <td>个人评价</td>
+                            <td>领导评价</td>
+                            <td>操作</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <volist name="co" id="c" key="k">
+                       
+                        <tr>
+                            <td>{$k}</td>
+                            <td><a href="__APP__/index.php/Admin/Chapter/index/co/{$c.co_id}" title="点击查看详细">{$c.co_name}</a></td>
+                            <td>{$c.co_type}</td>
+                            <td>{$c.co_manager}</td>
+                            <td>{$c.co_time_s}</td>
+                            <td>{$c.co_process}%</td>
+                            <td>{$c.co_time_e}</td>
+                            <td><a href="__APP__/index.php/Admin/Course/edt/co/{$c.co_id}">编辑</a>&nbsp;&nbsp;<a  href="__APP__/index.php/Admin/Course/del/co/{$c.co_id}">删除</a>&nbsp;&nbsp;<a  href="__APP__/index.php/Admin/Chapter/index/co/{$c.co_id}">详细</a></td>
+                        </tr>
+                    </volist>
+                        
+                    </tbody>
+                   
+                </table>
+               
+            </div>
+        </div>
+    </div>	
+    
+</div>
+<include file="Public/foot" />
+
+

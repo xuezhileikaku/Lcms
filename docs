@@ -1,0 +1,48 @@
+ 进度：<input type="range" name="co_process" value="0" min="0" step="10" max="100" /><span id="pro"></span>
+                         $(function(){
+                        //设置input 进度的值
+                    var $pro = $("input[name='co_process']");
+                    alert($pro.val());
+                    $pro.mouseout(function () {
+                            $("#pro").empty();
+                            $("#pro").append($pro.val() + '%');
+                        });
+                    });
+
+
+                    <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>编号</th>
+                            <td>章节</td>
+                            <td>进度</td>
+                            <td>开始时间</td>
+                            <td>结束时间</td>
+                            <td>操作</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <volist name="ch" id="h" key='k'>
+                        <tr>
+                            <td>{$h.ch_num}章</td>
+                            <td>{$h.ch_name}</td>
+                            <td>{$h.ch_pro}</td>
+                            <td>{$h.ch_time_s}</td>
+                            <td>{$h.ch_time_e}</td>
+                            <td><a href="__APP__/index.php/Admin/Chapter/edt/co/{$h.co_id}/ch/{$h.ch_id}">编辑</a>&nbsp;&nbsp;
+                                <a  href="__APP__/index.php/Admin/Chapter/del/co/{$h.co_id}/ch/{$h.ch_id}">删除</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                                <a href="__APP__/index.php/Admin/Modu/index/co/{$h.co_id}/ch/{$h.ch_id}">管理模块</a></td>
+                        </tr>
+                    </volist>
+                    <tr id="add">
+                    <form action="__APP__/index.php/Admin/Chapter/add" method="post">
+                       
+                        <input  type="text" style="width: 94%;" id="start" placeholder="开始日" class="laydate-icon" name="ch_time_s" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})"/>
+                        </td>
+                        <td >
+                            
+                        <td ><input type="hidden" name="co_id"  value="<?php echo $_GET['co']?>"/><input type="submit"  value="提交"/></td>
+                        </form>
+                    </tr>
+                    </tbody>
+                </table>

@@ -1,0 +1,21 @@
+<include file="Public/head" />
+<include file="Public/menu" />
+<include file="Public/side" />
+<div class='row-fluid'>
+    <p class="block-heading" data-toggle="collapse" data-target="#chart-container" align='center'>学科编辑</p>
+    <div class="block span8">
+        <form action="__APP__/index.php/Admin/Cat/addUp" method="post"  >
+
+            <div class="block-heading" data-toggle="collapse" data-target="#tablewidget"> 
+                学科：<input type="text" name="cat_name" style="width: 13%;" placeholder="名称" />
+
+            </div>
+            <div id="tablewidget" class="block-body collapse in">
+                介绍：<input type="text" class="modu_name" name="cat_intro" style="width: 13%;" placeholder="描述" /><br/>
+
+                &nbsp; &nbsp; &nbsp;<button class="btn-success" id="sub" >提交</button>
+            </div>
+        </form>
+    </div>
+</div>
+<include file="Public/foot" />

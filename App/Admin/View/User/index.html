@@ -1,0 +1,67 @@
+<include file="Public/head" />
+<include file="Public/menu" />
+<include file="Public/side" />
+<script >
+    //点击部门标题 显示或隐藏表格
+</script>
+<div class="span9">
+    <div>
+      <h1 class="page-title" align="center">人员管理</h1>
+      <h3>
+        <a class="btn-github" href="__APP__/index.php/Admin/User/add">添加人员</a></h3></div>
+    <div class="row-fluid">
+      <div class="block">
+
+        <div id="tabs" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
+          <!--循环输出部门名称-->
+
+          <ul class="block-heading" role="tablist">
+
+            <volist name="dep" id="p"  key="i">
+            <li class="ui-state-default ui-corner-top" ><a href="#tabs-{$p.cat_id}" >
+                {$p.cat_name}
+              </a>
+            </li>
+            </volist>
+          </ul>
+
+          <!--循环输出部门人员信息-->
+          <volist name="dep" id="p"  key="i">
+          <div id="tabs-{$p.cat_id}"  style="display: none;">
+            <div class="block-body collapse in">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>编号</th>
+                            <td>姓名</td>
+                            <td>账户</td>
+                            <td>角色</td>
+                            <td>邮件</td>
+                            <td>电话</td>
+                            <td>qq</td>
+                            <td>操作</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                      <volist name="user[$p['cat_id']]" id="u"  key="i">
+                      <tr>
+                          <td>{$i}</td>
+                          <td>{$u['u_real_name']}</td>
+                          <td>{$u['u_name']}</td>
+                          <td>{$u['u_role']}</td>
+                          <td>{$u['u_email']}</td>
+                          <td>{$u['u_tel']}</td>
+                          <td>{$u['u_qq']}</td>
+                          <td><a class="btn-info" href="__APP__/index.php/Admin/User/edt/id/{$u['u_id']}">编辑</a>&nbsp;&nbsp;<a class="btn-info" href="__APP__/index.php/Admin/User/del/id/{$u['u_id']}">删除</a></td>
+                     </volist>
+                    </tbody>
+                </table>
+            </div>
+          </div>
+          </volist>
+      <script type="text/javascript">
+          $( "#tabs" ).tabs();
+      </script>
+    </div>
+</div>
+<include file="Public/foot" />

@@ -1,0 +1,32 @@
+<include file="Public/head" />
+<include file="Public/menu" />
+<include file="Public/side" />
+<div class="span9">
+    <h1 class="page-title">课程设置</h1>
+    <div class="row-fluid">
+        <div class="block">
+            <p class="block-heading" data-toggle="collapse" data-target="#chart-container" align="center">课程列表 <span style="float: right;"><a href="__APP__/index.php/Admin/Course/add">添加课程</a></span></p>
+            <div id="chart-container" class="block-body collapse in">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>编号</th>
+                            <td>版块</td>
+                            <td>负责人</td>
+                            <td>操作</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <volist name="co" id="c" key="k">
+                        <tr>
+                            <td>{$k}</td>
+                            <td><a href="__APP__/index.php/Admin/Course/edt/co/{$c.co_id}">编辑</a>&nbsp;&nbsp;<a  href="__APP__/index.php/Admin/Course/del/co/{$c.co_id}">删除</a></td>
+                        </tr>
+                    </volist>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>	
+</div>
+<include file="Public/foot" />
