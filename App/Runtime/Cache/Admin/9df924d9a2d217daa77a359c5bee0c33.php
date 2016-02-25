@@ -1,21 +1,19 @@
 <?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
-<!--[if lt IE 7 ]><html lang="en" class="ie6 ielt7 ielt8 ielt9"><![endif]--><!--[if IE 7 ]><html lang="en" class="ie7 ielt8 ielt9"><![endif]--><!--[if IE 8 ]><html lang="en" class="ie8 ielt9"><![endif]--><!--[if IE 9 ]><html lang="en" class="ie9"> <![endif]--><!--[if (gt IE 9)|!(IE)]><!--> 
-<html lang="en"><!--<![endif]--> 
-    <head>
-        <meta charset="utf-8">
-        <title>文华在线产品事业部管理系统</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>管理后台</title>
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
     <link rel="stylesheet" type="text/css" href="/manage/Public/css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="/manage/Public/css/bootstrap-responsive.min.css" />
-    <link rel="stylesheet" type="text/css" href="/manage/Public/css/theme.css" />
-    <link rel="stylesheet" type="text/css" href="/manage/Public/css/font-awesome.css" />
-    <link rel="shortcut icon" href="/manage/Public/favicon.ico" />
-
-
-    <script src="lib/jquery-1.8.1.min.js" type="text/javascript"></script>
-
-    <!-- Demo page code -->
-
+    <link rel="stylesheet" type="text/css" href="/manage/Public/css/bootstrap-responsive.css" />
+    <link rel="stylesheet" type="text/css" href="/manage/Public/css/theme.css" /> 
+    <link rel="shortcut icon" href="./favicon.ico" />
+  <link rel="stylesheet" type="text/css" href="/manage/Public/css/font-awesome.css" />
+    <script type="text/javascript" src="/manage/Public/js/jquery.min.js"></script>
+  <!-- Demo page code -->    
     <style type="text/css">
         #line-chart {
             height:300px;
@@ -36,49 +34,252 @@
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    
+      <script src="javascripts/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="/manage/imgs/favicon.ico">
+
   </head>
 
-    <!--[if lt IE 7 ]> <body class="ie ie6"> <![endif]-->
-    <!--[if IE 7 ]> <body class="ie ie7"> <![endif]-->
-    <!--[if IE 8 ]> <body class="ie ie8"> <![endif]-->
-    <!--[if IE 9 ]> <body class="ie ie9"> <![endif]-->
-    <!--[if (gt IE 9)|!(IE)]><!--> 
-    <body> 
-        <!--<![endif]-->
+  <!--[if lt IE 7 ]> <body class="ie ie6"> <![endif]-->
+  <!--[if IE 7 ]> <body class="ie ie7"> <![endif]-->
+  <!--[if IE 8 ]> <body class="ie ie8"> <![endif]-->
+  <!--[if IE 9 ]> <body class="ie ie9"> <![endif]-->
+  <!--[if (gt IE 9)|!(IE)]><!--> 
+<body> 
+  <!--<![endif]-->
+    <!--menu-->
+	    <div class="navbar">
+	        <div class="navbar-inner">
+	            <div class="container-fluid">
+	                <ul class="nav pull-right">
+	                    
+	                    <li id="fat-menu" class="dropdown">
+	                        <a href="#" id="drop3" role="button" class="dropdown-toggle" data-toggle="dropdown">
+	                            <i class="icon-user"></i> Jack Smith
+	                            <i class="icon-caret-down"></i>
+	                        </a>
 
-        <div class="container-fluid">
-            <div class="row-fluid">
-                <div class="dialog span4">
-                    <div class="block">
-                        <div class="block-heading" align="center"><h2>文华在线内容事业部管理系统</h2></div>
-                        <div class="block-body">
-                            <form action="/manage/index.php/Admin/Index/logIn" method="post">
-                                <label>用户名</label>
-                                <input type="text" name="name" class="span12">
-                                <label>密码</label>
-                                <input type="password" name="pwd" class="span12">
-                                <button type="submit" class="btn btn-primary pull-right">登录</button>
-                                <label class="remember-me"><input type="checkbox"> 记住我</label>
-                                <a href="/manage/index.php/Admin/User/reset">忘记密码?</a>&nbsp;&nbsp;&nbsp;&nbsp;
-                                <a class="btn-info" href="/manage/index.php/Admin/Index/reg">立即注册</a>
-                                <div class="clearfix"></div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
+	                        <ul class="dropdown-menu">
+	                            <li><a tabindex="-1" href="#">Settings</a></li>
+	                            <li class="divider"></li>
+	                            <li><a tabindex="-1" href="sign-in.html">Logout</a></li>
+	                        </ul>
+	                    </li>
+	                    
+	                </ul>
+	                <a class="brand" href="index.html"><span class="first">Your</span> <span class="second">Company</span></a>
+	            </div>
+	        </div>
+	    </div>
+    
+      <!--content-->
+	<div class="container-fluid">     
+	    <div class="row-fluid">
+		            <div class="span3">
+		                <div class="sidebar-nav">
+                                    <div class="nav-header" data-toggle="collapse" data-target="#dashboard-menu"><i class="icon-dashboard"></i>课程</div>
+                                  <ul id="dashboard-menu" class="nav nav-list collapse in">
+                                      
+                                      <li><a href="/manage/index.php/Admin/Course/index">课程管理</a></li>
+
+                                      <li ><a href="/manage/index.php/Admin/Cat/index">课程分类</a></li>
+                                      <li ><a href="/manage/index.php/Admin/Course/set">课程设置</a></li>
+                                  </ul>
+                                    <div class="nav-header" data-toggle="collapse" data-target="#dashboard-menu"><i class="icon-dashboard"></i>工作</div>
+                                <ul id="dashboard-menu" class="nav nav-list collapse in">
+                                <li><a href="index.html">周统计</a></li>
+                                <li ><a href="users.html">月统计</a></li>
+                               
+                                </ul>
+                                    <div class="nav-header" data-toggle="collapse" data-target="#dashboard-menu"><i class="icon-dashboard"></i>&nbsp;人事</div>
+                                  <ul id="dashboard-menu" class="nav nav-list collapse in">
+                                      <li><a href="/manage/index.php/Admin/User/index">人员管理</a></li>
+                                      <li ><a href="/manage/index.php/Admin/Gp/index">人员分组</a></li>
+                                      
+                                  </ul>
+                                  
+		                <div class="nav-header" data-toggle="collapse" data-target="#accounts-menu"><i class="icon-briefcase"></i>账户<span class="label label-info">+10</span></div>
+		                <ul id="accounts-menu" class="nav nav-list collapse in">
+                                    <li ><a href="sign-in.html">登录</a></li>
+		                  <li ><a href="sign-up.html">退出</a></li>
+		                  <li ><a href="reset-password.html">密码重置</a></li>
+		                </ul>
+
+		                <div class="nav-header" data-toggle="collapse" data-target="#legal-menu"><i class="icon-legal"></i>权限</div>
+		                <ul id="legal-menu" class="nav nav-list collapse in">
+		                  <li ><a href="privacy-policy.html">私有属性</a></li>
+		                  <li ><a href="terms-and-conditions.html">Terms and Conditions</a></li>
+		                </ul>
+                                
+                                 <div class="nav-header" data-toggle="collapse" data-target="#settings-menu"><i class="icon-exclamation-sign"></i>Error Pages</div>
+		                <ul id="settings-menu" class="nav nav-list collapse in">
+		                  <li ><a href="403.html">403 page</a></li>
+		                  <li ><a href="404.html">404 page</a></li>
+		                  <li ><a href="500.html">500 page</a></li>
+		                  <li ><a href="503.html">503 page</a></li>
+		                </ul>
+		            </div>
+        </div>
+<div class="span9">
+    <script type="text/javascript" src="lib/jqplot/jquery.jqplot.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="javascripts/graphDemo.js"></script>
+    <div class="stats">
+        <p class="stat"><span class="number">53</span>tickets</p>
+        <p class="stat"><span class="number">27</span>tasks</p>
+        <p class="stat"><span class="number">15</span>waiting</p>
+    </div>
+    <h1 class="page-title">Dashboard</h1>
+    <div class="row-fluid">
+        <div class="block">
+            <p class="block-heading" data-toggle="collapse" data-target="#chart-container">Performance Chart</p>
+            <div id="chart-container" class="block-body collapse in">
+                <div id="line-chart"></div>
             </div>
         </div>
-            <!-- Le javascript
-            ================================================== -->
-            <!-- Placed at the end of the document so the pages load faster -->
-            <script src="lib/bootstrap/js/bootstrap.js"></script>
-    </body>
+    </div>	
+    <div class="row-fluid">
+        <div class="block span6">
+            <div class="block-heading" data-toggle="collapse" data-target="#tablewidget">新课程</div>
+            <div id="tablewidget" class="block-body collapse in">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Username</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Mark</td>
+                            <td>Tompson</td>
+                            <td>the_mark7</td>
+                        </tr>
+                        <tr>
+                            <td>Ashley</td>
+                            <td>Jacobs</td>
+                            <td>ash11927</td>
+                        </tr>
+                        <tr>
+                            <td>Audrey</td>
+                            <td>Ann</td>
+                            <td>audann84</td>
+                        </tr>
+                        <tr>
+                            <td>John</td>
+                            <td>Robinson</td>
+                            <td>jr5527</td>
+                        </tr>
+                        <tr>
+                            <td>Aaron</td>
+                            <td>Butler</td>
+                            <td>aaron_butler</td>
+                        </tr>
+                        <tr>
+                            <td>Chris</td>
+                            <td>Albert</td>
+                            <td>cab79</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p><a href="users.html">More...</a></p>
+            </div>
+        </div>
+        <div class="block span6">
+            <div class="block-heading" data-toggle="collapse" data-target="#widget1container">Collapsible </div>
+            <div id="widget1container" class="block-body collapse in">
+                <h2>Using Ruby?</h2>
+                <p>This template was developed with <a href="http://middlemanapp.com/" target="_blank">Middleman</a> and includes .erb layouts and views.</p>
+                <p>All of the views you see here (sign in, sign up, users, etc) are already split up so you don't have to waste your time doing it yourself!</p>
+                <p>The layout.erb file includes the header, footer, and side navigation and all of the views are broken out into their own files.</p>
+                <p>If you aren't using Ruby, there is also a set of plain HTML files for each page, just like you would expect.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row-fluid">
+        <div class="block span6">
+            <div class="block-heading" data-toggle="collapse" data-target="#widget2container">新用户<span class="label label-warning">+10</span></div>
+            <div id="widget2container" class="block-body collapse in">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <p><i class="icon-user"></i> Mark Otto</p>
+                            </td>
+                            <td>
+                                <p>Amount: $1,247</p>
+                            </td>
+                            <td>
+                                <p>Date: 7/19/2012</p>
+                                <a href="#">View Transaction</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p><i class="icon-user"></i> Audrey Ann</p>
+                            </td>
+                            <td>
+                                <p>Amount: $2,793</p>
+                            </td>
+                            <td>
+                                <p>Date: 7/12/2012</p>
+                                <a href="#">View Transaction</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p><i class="icon-user"></i> Mark Tompson</p>
+                            </td>
+                            <td>
+                                <p>Amount: $2,349</p>
+                            </td>
+                            <td>
+                                <p>Date: 3/10/2012</p>
+                                <a href="#">View Transaction</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p><i class="icon-user"></i> Ashley Jacobs</p>
+                            </td>
+                            <td>
+                                <p>Amount: $1,192</p>
+                            </td>
+                            <td>
+                                <p>Date: 1/19/2012</p>
+                                <a href="#">View Transaction</a>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="block span6">
+            <p class="block-heading">Not Collapsible</p>
+            <div class="block-body">
+                <h2>Tip of the Day</h2>
+                <p>Fava bean jícama seakale beetroot courgette shallot amaranth pea garbanzo carrot radicchio peanut leek pea sprouts arugula brussels sprout green bean. Spring onion broccoli chicory shallot winter purslane pumpkin gumbo cabbage squash beet greens lettuce celery. Gram zucchini swiss chard mustard burdock radish brussels sprout groundnut. Asparagus horseradish beet greens broccoli brussels sprout bitterleaf groundnut cress sweet pepper leek bok choy shallot celtuce scallion chickpea radish pea sprouts.</p>
+                <p><a class="btn btn-primary btn-large">Learn more &raquo;</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+	   <!--foot-->
+<div>
+    <footer>
+        <hr>
+            <p align="center">&copy; 2015 <a href="#">内容事业部</a>&nbsp;&nbsp;Copy right@ <a href="http://www.ulearn.cn/" title="文华在线" target="_blank">文华在线</a> </p>        
+    </footer>	
+</div>
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/manage/Public/js/bootstrap.js"></script>
+  </body>
 </html>
-
-
-
-
-</head>
-<body>

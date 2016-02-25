@@ -1,0 +1,6 @@
+[ 2015-08-06T08:39:55+08:00 ] 127.0.0.1 /manage/index.php/Admin/Index/javascripts/graphDemo.js
+ERR: 非法操作:javascripts
+
+[ 2015-08-06T08:39:55+08:00 ] 127.0.0.1 /manage/index.php/Admin/Index/lib/jqplot/jquery.jqplot.min.js
+ERR: 非法操作:lib
+

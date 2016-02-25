@@ -1,27 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <title>管理后台</title>
-        <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="">
-        <meta name="author" content="">
+  <head>
+    <meta charset="utf-8">
+    <title>管理后台</title>
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
     <load file="__PUBLIC__/css/bootstrap.min.css" />
     <load file="__PUBLIC__/css/bootstrap-responsive.css" />
     <load file="__PUBLIC__/css/theme.css" /> 
-    <load file="__PUBLIC__/css/ch.css"/>
-     
-    <load file="__PUBLIC__/css/font-awesome.css" />
-    <load file="__PUBLIC__/calendar/need/laydate.css"/>
-    <load file="__PUBLIC__/calendar/skins/molv/laydate.css"/> 
-    <load file="__PUBLIC__/js/jquery.min.js"/>
-    <load file="__PUBLIC__/js/jquery.form.js"/>
-    <load file="__PUBLIC__/js/ch.js"/>
-     <load file="__PUBLIC__/js/ch.js"/>
+  <load file="__PUBLIC__/css/font-awesome.css" />
+  <load file="__PUBLIC__/calendar/need/laydate.css"/>
+  <load file="__PUBLIC__/calendar/skins/molv/laydate.css"/> 
+  <load file="__PUBLIC__/js/jquery.min.js"/>
     <load file="__PUBLIC__/calendar/laydate.js"/>
-
-    <!-- Demo page code -->    
+    
+  <!-- Demo page code -->    
     <style type="text/css">
         #line-chart {
             height:300px;
@@ -48,98 +43,103 @@
     <!-- Le fav and touch icons -->
     <link rel="shortcut icon" href="__APP__/imgs/favicon.ico">
 
-</head>
+  </head>
 
-<!--[if lt IE 7 ]> <body class="ie ie6"> <![endif]-->
-<!--[if IE 7 ]> <body class="ie ie7"> <![endif]-->
-<!--[if IE 8 ]> <body class="ie ie8"> <![endif]-->
-<!--[if IE 9 ]> <body class="ie ie9"> <![endif]-->
-<!--[if (gt IE 9)|!(IE)]><!--> 
+  <!--[if lt IE 7 ]> <body class="ie ie6"> <![endif]-->
+  <!--[if IE 7 ]> <body class="ie ie7"> <![endif]-->
+  <!--[if IE 8 ]> <body class="ie ie8"> <![endif]-->
+  <!--[if IE 9 ]> <body class="ie ie9"> <![endif]-->
+  <!--[if (gt IE 9)|!(IE)]><!--> 
 <include file="Public/menu" />
 <include file="Public/side" />
 <script>
-    $(function () {
-        $("#addch").hide();
+    $(function(){
+        $("#add").hide();
         $("#btn").click(function () {
-            $("#addch").show();
+            $("#add").show();
         });
-       
     });
-   
 </script>
 <div class="span9">
-    <h2 align="center">{$cou.name}</h2>
+    <h2>{$cou}</h2>
     <div class="row-fluid">
         <div class="block">
-            <p class="block-heading" data-toggle="collapse" data-target="#chart-container">
-                <a href='__APP__/index.php/Admin/Course/index'>课程</a>-》章节管理
-                <a id="btn" style="float: right;" href="__APP__/index.php/Admin/Chapter/add/co/{$cou['id']}">添加章节</a>
-               
+            <p class="block-heading" data-toggle="collapse" data-target="#chart-container"><a href='__APP__/index.php/Admin/Course/index'>课程</a>-》章节管理
+                <button id="btn" style="float: right;" > 添加 </button>
             </p>
             <div id="chart-container" class="block-body collapse in">
-                 <table class="table table-striped">
+                <table class="table table-striped">
                     <thead>
                         <tr>
                             <th>编号</th>
-                            <td>名称</td>
-                            
+                            <td>章节</td>
+                            <td>进度</td>
                             <td>开始时间</td>
-                             <td>当前进度</td>
                             <td>结束时间</td>
                             <td>操作</td>
                         </tr>
                     </thead>
                     <tbody>
-                    <volist name="ch" id="c" key="k">
-                       
+                    <volist name="ch" id="h" key='k'>
                         <tr>
-                            <td>{$k}</td>
-                            <td>{$c.name}</td>
-                            <td>{$c.time_s}</td>
-                            <td>{$c.pro}%</td>
-                            <td>{$c.time_e}</td>
-                            <td><a href="__APP__/index.php/Admin/Chapter/edt/co/{$cou.id}/ch/{$c.id}">编辑</a>&nbsp;&nbsp;<a  href="__APP__/index.php/Admin/Chapter/del/co/{$cou.id}/ch/{$c.id}">删除</a>&nbsp;&nbsp;<a  href="__APP__/index.php/Admin/Modu/index/co/{$cou.id}/ch/{$c.id}">详细</a></td>
+                            <td>{$h.ch_num}章</td>
+                            <td>{$h.ch_name}</td>
+                            <td>{$h.ch_pro}</td>
+                            <td>{$h.ch_time_s}</td>
+                            <td>{$h.ch_time_e}</td>
+                            <td><a href="__APP__/index.php/Admin/Chapter/edt/co/{$h.co_id}/ch/{$h.ch_id}">编辑</a>&nbsp;&nbsp;
+                                <a  href="__APP__/index.php/Admin/Chapter/del/co/{$h.co_id}/ch/{$h.ch_id}">删除</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                                <a href="__APP__/index.php/Admin/Modu/index/co/{$h.co_id}/ch/{$h.ch_id}">管理模块</a></td>
                         </tr>
                     </volist>
+                    <tr id="add">
+                    <form action="__APP__/index.php/Admin/Chapter/add" method="post">
+                        <td "><input style="width: 15%;" type="text" name="ch_num" placeholder="第几"/>章</td>
+                        <td ><input style="width: 50%;" type="text" name="ch_name" placeholder="名称"/></td>
+                        <td ><input style="width: 20%;" type="text" name="ch_pro" placeholder="进度"/>%</td>
+                        <td >
+                        <input  type="text" style="width: 94%;" id="start" placeholder="开始日" class="laydate-icon" name="ch_time_s" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})"/>
+                        </td>
+                        <td >
+                            <input type="text" style="width: 94%;" id="end" placeholder="结束日" class="laydate-icon" name="ch_time_e" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" /></td>
+                        <td ><input type="hidden" name="co_id"  value="<?php echo $_GET['co']?>"/><input type="submit"  value="提交"/></td>
+                        </form>
+                    </tr>
+                    </tbody>
                 </table>
+ <script>
+                    //日期范围限制
+var start = {
+    elem: '#start',
+    format: 'YYYY-MM-DD',
+    min: laydate.now(), //设定最小日期为当前日期
+    max: '2099-06-16', //最大日期
+    istime: true,
+    istoday: false,
+    choose: function(datas){
+         end.min = datas; //开始日选好后，重置结束日的最小日期
+         end.start = datas //将结束日的初始值设定为开始日
+    }
+};
+
+var end = {
+    elem: '#end',
+    format: 'YYYY-MM-DD',
+    min: laydate.now(),
+    max: '2099-06-16',
+    istime: true,
+    istoday: false,
+    choose: function(datas){
+        start.max = datas; //结束日选好后，充值开始日的最大日期
+    }
+};
+laydate(start);
+laydate(end);
+                    
+                </script>
             </div>
         </div>
     </div>
-</div>
-
-<script>
-    //日期范围限制
-    var start = {
-        elem: '#start',
-        format: 'YYYY-MM-DD',
-        min: laydate.now(), //设定最小日期为当前日期
-        max: '2099-06-16', //最大日期
-        istime: true,
-        istoday: false,
-        choose: function (datas) {
-            end.min = datas; //开始日选好后，重置结束日的最小日期
-            end.start = datas //将结束日的初始值设定为开始日
-        }
-    };
-
-    var end = {
-        elem: '#end',
-        format: 'YYYY-MM-DD',
-        min: laydate.now(),
-        max: '2099-06-16',
-        istime: true,
-        istoday: false,
-        choose: function (datas) {
-            start.max = datas; //结束日选好后，充值开始日的最大日期
-        }
-    };
-    laydate(start);
-    laydate(end);
-
-</script>
-</div>
-</div>
-</div>
 </div>
 </div>
 

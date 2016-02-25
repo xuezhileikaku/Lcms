@@ -1,0 +1,56 @@
+<include file="Public/head" />
+<include file="Public/menu" />
+<include file="Public/side" />
+
+<script>
+    $(function () {
+        $("#add").hide();
+        $("#btn").click(function () {
+            $("#add").show();
+        });
+    });
+</script>
+<div class="span9">
+    <h1 class="page-title">管理分组</h1>
+    <div class="row-fluid">
+        <div class="block">
+            <p class="block-heading" data-toggle="collapse" data-target="#chart-container">分组列表<button id="btn" style="float: right;" > 添加 </button></p>
+            <div id="chart-container" class="block-body collapse in">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th style='width: 4%;'>编号</th>
+                            <td style='width: 14%;'>部门名称</td>
+                            <td style='width: 24%;'>介绍</td>
+                            <td >成员</td>
+                             <td style='width: 14%;'>操作</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <?php 
+                            foreach($up as $k=>$v){
+                                echo "<tr><td >".($k+1)."</td><td>".$v['up_name']."</td><td>".$v['up_intro']."</td><td>";
+                                foreach($v['user'] as $key=>$va){
+                                    echo "<a href='".$key."'>".$va."</a>&nbsp;&nbsp;";
+                                }
+                                echo  "</td><td><a href='__APP__/index.php/Admin/Gp/edt/id/".$v['up_id']."'>编辑</a>&nbsp;&nbsp;<a  href='__APP__/index.php/Admin/Gp/del/id/".$v['up_id']."'>删除</a></td></tr>";
+                            
+                            }
+                  ?>
+                            
+                    <form action="__APP__/index.php/Admin/Gp/add" method="post">
+                        <tr id="add">
+                            <td></td>
+                            <td><input type="text" name="up_name" /></td>
+                            <td><textarea name="up_intro" rows="1"></textarea></td>
+                            <td><input type="submit" value="提交"/></td>
+                        </tr>   
+                    </form>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<include file="Public/foot" />
+

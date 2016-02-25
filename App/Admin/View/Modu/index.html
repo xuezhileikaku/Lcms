@@ -64,8 +64,8 @@
     <h2>{$cou}</h2>
     <div class="row-fluid">
         <div class="block">
-            <p class="block-heading" data-toggle="collapse" data-target="#chart-container"><a href='__APP__/index.php/Admin/Course/index'>课程</a>-》<a href="__APP__/index.php/Admin/Chapter/index/co/{$cho.co}">章</a>-》模块管理
-                 <a id="btn" style="float: right;" href="__APP__/index.php/Admin/Modu/add/co/{$cho.co}/ch/{$cho.ch}">添加模块</a> 
+            <p class="block-heading" data-toggle="collapse" data-target="#chart-container"><a href='__APP__/index.php/Admin/Course/index'>课程</a>-》<a href='__APP__/index.php/Admin/Course/index'>章</a>-》模块管理
+                <button id="btn" style="float: right;" > 添加 </button>
             </p>
             <div id="chart-container" class="block-body collapse in">
                 <table class="table table-striped">
@@ -73,10 +73,9 @@
                         <tr>
                             <th>序号</th>
                             <td>模块</td>
+                            <td>进度</td>
                             <td>负责人</td>
-                            <td>完成状态</td>
                             <td>开始时间</td>
-                             <td>当前进度</td>
                             <td>结束时间</td>
                             <td>操作</td>
                         </tr>
@@ -87,17 +86,31 @@
                         <tr>
                             <td style="width: 8%;">模块{$k}</td>
                             <td style="width: 15%;">{$m.mo_name}</td>
-                            <td>{$m.mo_manager}</td>
-                            <td>
-                                {$m.mo_stats}
-                            </td>
-                            <td style="width: 15%;">{$m.mo_time_s}</td>
                             <td style="width: 15%;">{$m.mo_pro}%</td>
+                            <td>{$m.mo_manager}</td>
+                            <td style="width: 15%;">{$m.mo_time_s}</td>
                             <td style="width: 15%;">{$m.mo_time_e}</td>
                             <td><a href="__APP__/index.php/Admin/Modu/edt/id/{$m.mo_id}">编辑</a>&nbsp;&nbsp;
-                                <a  href="__APP__/index.php/Admin/Modu/del/id/{$m.mo_id}">删除</a></td>
+                                <a  href="__APP__/index.php/Admin/Modu/del/co/{$m.co_id}/ch/{$m.ch_id}/id/{$m.mo_id}">删除</a></td>
                         </tr>
                     </volist>
+                    <tr id="add">
+                    <form action="__APP__/index.php/Admin/Modu/add" method="post">
+                        <td></td>
+                        <td ><input  type="text" style="width: 100px;" name="mo_name" placeholder="模块"/></td>
+                        <td ><input  type="text" style="width: 70px;" name="mo_pro" placeholder="进度"/>%</td>
+                        <td ><input  type="text" style="width: 80px;" name="mo_manager" placeholder="负责人"/></td>
+                        
+                        <td >
+                        <input  type="text" style="width: 150px;" id="start" placeholder="开始日" class="laydate-icon" name="mo_time_s" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})"/>
+                        </td>
+                        <td >
+                            <input type="text" style="width: 150px;" id="end" placeholder="结束日" class="laydate-icon" name="mo_time_e" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" /></td>
+                        <td ><input type="hidden" name="co_id"  value="<?php echo $_GET['co']?>"/>
+                            <input type="hidden" name="ch_id"  value="<?php echo $_GET['ch']?>"/>
+                            <input type="submit"  value="提交"/></td>
+                        </form>
+                    </tr>
                     </tbody>
                 </table>
                 <script>

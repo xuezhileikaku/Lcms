@@ -12,50 +12,40 @@ class ChapterController extends Controller {
     public function index(){
         $cp=M("Chapter");
         //获取课程ID
-        $co['id']=$_GET['co'];
-        
-       $c=$this->getCou();
+        $co=$_GET['co'];
+        //获取课程下的章节
+        $ch=$cp->where("co_id=$co")->select();
+        $c=$this->getCou();
         //获取课程名称
-        $co['name']= $c[$co['id']];
-         //获取课程下的章节
-        $where="co_id=".$_GET['co'];
-        foreach ($cp->where($where)->select() as $k => $v) {
-            $ch[$k]['id']=$v['ch_id'];
-            $ch[$k]['name']=$v['ch_name'];
-            $ch[$k]['time_s']=  date("Y-m-d",$v['ch_time_s']);
-            $ch[$k]['time_e']=date("Y-m-d",$v['ch_time_e']);
-            $ch[$k]['pro']=$v['ch_pro'];
-        }
+        $cou= $c[$co];
         //var_dump($cou);
-        $this->assign('cou',$co);
+        $this->assign('cou',$cou);
         $this->assign('ch',$ch);
         $this->display();
     }
-    public function add() {
-        
-        $this->display();
-    }
      //接收添加课程章节数据
-    public function addUp() {
-        $url="index/co/".$_POST['co_id'];
+    public function add() {
+     
         $data['co_id']=(int)$_POST['co_id'];
         $data['ch_num']=(int)$_POST['ch_num'];
         $data['ch_name']=$_POST['ch_name'];
-        $data['ch_time_s']=time();
+        $data['ch_pro']=(int)$_POST['ch_pro'];
+        $data['ch_time_s']=$_POST['ch_time_s'];
+        $data['ch_time_e']=$_POST['ch_time_e'];
         $ch=M('chapter');
         $re=$ch->add($data);
         if($re){
-           $this->success('添加成功',$url);
+            $this->success('添加成功', "index/co/{$data['co_id']}");
         }  else {
             $this->error('添加失败');
         }
     }
     //接收更新章节的信息
     public function up() {
+        
         $id=$_POST['ch_id'];
         $co=$_POST['co_id'];
         $data['ch_name']=$_POST['ch_name'];
-        $data['ch_pro']=  $this->countPro($co, $id);
         $ch=M('chapter');
         $re=$ch->where("ch_id=$id")->save($data);
         if($re){
@@ -100,23 +90,6 @@ class ChapterController extends Controller {
         }
         //dump($data);
         return $data;
-    }
-    //计算章节下课程的进度
-    private function countPro($co,$ch) {
-        $m = M("Modu");
-        //拼凑where 条件
-        $where="co_id=".$co." AND ch_id=".$ch;
-        //计数
-        $num=0;
-        //计算总分
-        $tmp=0;
-        //根据章节ID获取模块信息
-        $data=$m->where($where)->select();
-        foreach ($data as $k=> $v){
-            $tmp+=(int)$v['mo_pro'];
-            $num++;
-        }
-        return ceil($tmp/$num);
     }
 }
 ?>

@@ -1,0 +1,33 @@
+[ 2015-08-07T09:26:40+08:00 ] 127.0.0.1 /manage/index.php/Admin/Modu/getModu
+ERR: 非法操作:getModu
+
+[ 2015-08-07T09:26:54+08:00 ] 127.0.0.1 /manage/index.php/Admin/Modu/getgetDepart
+ERR: 非法操作:getgetDepart
+
+[ 2015-08-07T09:40:52+08:00 ] 127.0.0.1 /manage/index.php/Admin/Modu/getgetDepart
+ERR: 非法操作:getgetDepart
+
+[ 2015-08-07T09:40:54+08:00 ] 127.0.0.1 /manage/index.php/Admin/Modu/getModu
+ERR: 非法操作:getModu
+
+[ 2015-08-07T15:53:49+08:00 ] 127.0.0.1 /manage/index.php/Admin/Modu/getDep
+ERR: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+
+[ 2015-08-07T15:57:11+08:00 ] 127.0.0.1 /manage/index.php/Admin/Modu/getDep
+ERR: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'modu' in 'field list'
+
+[ 2015-08-07T16:08:00+08:00 ] 127.0.0.1 /manage/index.php/Admin/Modu/index/
+ERR: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1
+
+[ 2015-08-07T16:31:57+08:00 ] 127.0.0.1 /manage/index.php/Admin/Modu/index/co/1/ch/__CONTROLLER__/set
+ERR: SQLSTATE[42S22]: Column not found: 1054 Unknown column '__CONTROLLER__' in 'where clause'
+
+[ 2015-08-07T16:34:14+08:00 ] 127.0.0.1 /manage/index.php/Admin/Modu/set
+ERR: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+
+[ 2015-08-07T18:20:14+08:00 ] 127.0.0.1 /manage/index.php/Admin/Modu/setUp
+ERR: Think\Controller:addALL方法不存在！
+
+[ 2015-08-07T18:20:31+08:00 ] 127.0.0.1 /manage/index.php/Admin/Modu/setUp
+ERR: Think\Controller:addAll方法不存在！
+

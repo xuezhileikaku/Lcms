@@ -56,22 +56,15 @@
     <h2>{$cou}</h2>
     <div class="row-fluid">
         <div class="block">
-            <p class="block-heading" data-toggle="collapse" data-target="#chart-container"><a href='__APP__/index.php/Admin/Course/index'>课程</a>-》<a href='__APP__/index.php/Admin/Chapter/index/co/{$mo.ch_id}'>章</a>-》模块管理
+            <p class="block-heading" data-toggle="collapse" data-target="#chart-container"><a href='__APP__/index.php/Admin/Course/index'>课程</a>-》<a href='__APP__/index.php/Admin/Course/index'>章</a>-》模块管理
                 <button id="btn" style="float: right;" > 添加 </button>
             </p>
-            <div  class="block-body collapse in">
+            <div id="chart-container" class="block-body collapse in">
                 <form action='__APP__/index.php/Admin/Modu/up' method='post'>
                     <br/>
-                     <div class="form-group">
-                         模块：
-                         <input style="height:30px;" type="text" name="mo_name"  value="{$mo.mo_name}"/>
-                     </div>
-                    <div class="form-group">
-                         负责人：<input type="text" style="height:30px;"  name="mo_manager"  value="{$mo.mo_manager}"/>
-                     </div>
-                    <div class="form-group">
-                         进度： <input type="range" value="0" step="10" id="range" style="width: 15% ;height: 30px;"  title="" name="co_process" min="0" max="100" /><span id="pro"></span>
-                     </div>
+                模块：<input type="text" name="mo_name"  value="{$mo.mo_name}"/><br/>
+                负责人：<input type="text" name="mo_manager"  value="{$mo.mo_manager}"/><br/>
+                进度：<input type="text" name="mo_pro"  value="{$mo.mo_pro}"/><br/>
                 <input type="hidden" name="mo_id"  value="{$mo.mo_id}"/>
                 <input type="hidden" name="co_id"  value="{$mo.co_id}"/>
                 <input type="hidden" name="ch_id"  value="{$mo.ch_id}"/>
@@ -81,13 +74,5 @@
         </div>
     </div>
 </div>
-<script>                  
-    //设置input 进度的值
-                    var $pro = $("#range");
-                    $pro.mouseout(function () {
-                            $("#pro").empty();
-                            $("#pro").append($pro.val() + '%');
-                        });
-</script>
 </div>
 <include file="Public/foot" />

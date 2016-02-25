@@ -1,0 +1,24 @@
+<include file="Public/head" />
+<include file="Public/menu" />
+<include file="Public/side" />
+<div class="span9">
+    <h1 class="page-title">管理分组</h1>
+    <div class="row-fluid">
+        <div class="block">
+            <p class="block-heading" data-toggle="collapse" data-target="#chart-container">分组列表<button id="btn" style="float: right;" > 添加 </button></p>
+            <div id="chart-container" class="block-body collapse in">
+                <div>
+                    <form action="__APP__/index.php/Admin/Gp/up" method="post">
+                       小组名称：<input type="text" name="up_name" value="{$up.up_name}" /><br/>
+                       小组介绍：<textarea name="up_intro" rows="2">{$up.up_intro}</textarea><br/>
+                            <input type="hidden" name="up_id" value="{$up.up_id}" />
+                            <input type="submit" value="提交"/>
+                        
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<include file="Public/foot" />
+

@@ -9,13 +9,11 @@
     <meta name="author" content="">
     <link rel="stylesheet" type="text/css" href="/manage/Public/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="/manage/Public/css/bootstrap-responsive.css" />
-    <link rel="stylesheet" type="text/css" href="/manage/Public/css/theme.css" />
-    <link rel="stylesheet" type="text/css" href="/manage/Public/css/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="/manage/Public/css/theme.css" /> 
     <link rel="shortcut icon" href="./favicon.ico" />
   <link rel="stylesheet" type="text/css" href="/manage/Public/css/font-awesome.css" />
-  <script type="text/javascript" src="/manage/Public/js/jquery.js"></script>
-  <script type="text/javascript" src="/manage/Public/js/jquery-ui.min.js"></script>
-  <!-- Demo page code -->
+    <script type="text/javascript" src="/manage/Public/js/jquery.min.js"></script>
+  <!-- Demo page code -->    
     <style type="text/css">
         #line-chart {
             height:300px;
@@ -48,8 +46,7 @@
   <!--[if IE 7 ]> <body class="ie ie7"> <![endif]-->
   <!--[if IE 8 ]> <body class="ie ie8"> <![endif]-->
   <!--[if IE 9 ]> <body class="ie ie9"> <![endif]-->
-  <!--[if (gt IE 9)|!(IE)]><!-->
-
+  <!--[if (gt IE 9)|!(IE)]><!--> 
 <body> 
   <!--<![endif]-->
     <!--menu-->
@@ -57,9 +54,18 @@
 	        <div class="navbar-inner">
 	            <div class="container-fluid">
 	                <ul class="nav pull-right">
-	                    <li id="fat-menu" class="paragraph">
-                                <?php echo $_SESSION['user']['name'];?>
-	                        
+	                    
+	                    <li id="fat-menu" class="dropdown">
+	                        <a href="#" id="drop3" role="button" class="dropdown-toggle" data-toggle="dropdown">
+	                            <i class="icon-user"></i> Jack Smith
+	                            <i class="icon-caret-down"></i>
+	                        </a>
+
+	                        <ul class="dropdown-menu">
+	                            <li><a tabindex="-1" href="#">Settings</a></li>
+	                            <li class="divider"></li>
+	                            <li><a tabindex="-1" href="sign-in.html">Logout</a></li>
+	                        </ul>
 	                    </li>
 	                    
 	                </ul>
@@ -69,33 +75,36 @@
 	    </div>
     
       <!--content-->
-	<div class="container-fluid">
+	<div class="container-fluid">     
 	    <div class="row-fluid">
 		            <div class="span3">
 		                <div class="sidebar-nav">
                                     <div class="nav-header" data-toggle="collapse" data-target="#dashboard-menu"><i class="icon-dashboard"></i>课程</div>
                                   <ul id="dashboard-menu" class="nav nav-list collapse in">
-
+                                      
                                       <li><a href="/manage/index.php/Admin/Course/index">课程管理</a></li>
 
                                       <li ><a href="/manage/index.php/Admin/Cat/index">课程分类</a></li>
-                                      <li ><a href="/manage/index.php/Admin/Set/index">课程设置</a></li>
-
+                                      <li ><a href="/manage/index.php/Admin/Course/set">课程设置</a></li>
                                   </ul>
-
+                                    <div class="nav-header" data-toggle="collapse" data-target="#dashboard-menu"><i class="icon-dashboard"></i>工作</div>
+                                <ul id="dashboard-menu" class="nav nav-list collapse in">
+                                <li><a href="index.html">周统计</a></li>
+                                <li ><a href="users.html">月统计</a></li>
+                               
+                                </ul>
                                     <div class="nav-header" data-toggle="collapse" data-target="#dashboard-menu"><i class="icon-dashboard"></i>&nbsp;人事</div>
                                   <ul id="dashboard-menu" class="nav nav-list collapse in">
-
                                       <li><a href="/manage/index.php/Admin/User/index">人员管理</a></li>
-                                      <li ><a href="/manage/index.php/Admin/User/dep">部门列表</a></li>
-                                      <li ><a href="/manage/index.php/Admin//User/work">工作统计</a></li>
+                                      <li ><a href="/manage/index.php/Admin/Gp/index">人员分组</a></li>
+                                      
                                   </ul>
-
+                                  
 		                <div class="nav-header" data-toggle="collapse" data-target="#accounts-menu"><i class="icon-briefcase"></i>账户<span class="label label-info">+10</span></div>
 		                <ul id="accounts-menu" class="nav nav-list collapse in">
-
-		                  <li ><a href="/manage/index.php/Admin/Index/ext">退出</a></li>
-		                  <li ><a href="/manage/index.php/Admin/User/reset">密码重置</a></li>
+                                    <li ><a href="sign-in.html">登录</a></li>
+		                  <li ><a href="sign-up.html">退出</a></li>
+		                  <li ><a href="reset-password.html">密码重置</a></li>
 		                </ul>
 
 		                <div class="nav-header" data-toggle="collapse" data-target="#legal-menu"><i class="icon-legal"></i>权限</div>
@@ -103,45 +112,38 @@
 		                  <li ><a href="privacy-policy.html">私有属性</a></li>
 		                  <li ><a href="terms-and-conditions.html">Terms and Conditions</a></li>
 		                </ul>
-
-
+                                
+                                 <div class="nav-header" data-toggle="collapse" data-target="#settings-menu"><i class="icon-exclamation-sign"></i>Error Pages</div>
+		                <ul id="settings-menu" class="nav nav-list collapse in">
+		                  <li ><a href="403.html">403 page</a></li>
+		                  <li ><a href="404.html">404 page</a></li>
+		                  <li ><a href="500.html">500 page</a></li>
+		                  <li ><a href="503.html">503 page</a></li>
+		                </ul>
 		            </div>
         </div>
-
 <script>
-    $(function () {
+    $(function(){
         $('#add').hide();
-        $('#btn').click(function () {
+        $('#btn').click(function(){
             $('#add').show();
         });
     });
 </script>
 <div class="span9">
     <h1 class="page-title">学科分类</h1>
-    <div class="row-fluid">
-        <p class="block-heading" data-toggle="collapse" data-target="#chart-container " align="center">学科列表<span style="float: right;"><a href="/manage/index.php/Admin/Cat/add">添加学科</a></span></p>
-        <div id="chart-container" class="block-body collapse in">
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>编号</th>
-                        <td>名称</td>
-                        <td>描述</td>
-                        <td>模块</td>
-                        <td>操作</td>
-                    </tr>
-                </thead>
-                <tbody>
-                <?php if(is_array($ca)): $k = 0; $__LIST__ = $ca;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$c): $mod = ($k % 2 );++$k;?><tr>
-                        <td><?php echo ($k); ?></td>
-                        <td><?php echo ($c["name"]); ?></td>
-                        <td><?php echo ($c["intro"]); ?></td>
-                        <td><?php echo ($c[""]); ?></td>
-                        <td><a href="/manage/index.php/Admin/Cat/edt/id/<?php echo ($c["id"]); ?>">编辑</a>&nbsp;&nbsp;<a  href="/manage/index.php/Admin/Cat/del/id/<?php echo ($c["id"]); ?>">删除</a></td>
-                    </tr><?php endforeach; endif; else: echo "" ;endif; ?>
-                </tbody>
-            </table>
-        </div>
+     <div class="row-fluid">
+         <p class="block-heading" data-toggle="collapse" data-target="#chart-container " align="center">学科列表<span style="float: right;"><a href="/manage/index.php/Admin/Cat/add">添加学科</a></span></p>
+        <?php if(is_array($ca)): $k = 0; $__LIST__ = $ca;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$c): $mod = ($k % 2 );++$k;?><div class="block span6">
+            <div class="block-heading" data-toggle="collapse" data-target="#tablewidget"> 学科<?php echo ($k); ?>、<?php echo ($c["name"]); ?>&nbsp;&nbsp; 负责部门：<?php echo ($c["dep"]); ?></div>
+            <div id="tablewidget" class="block-body collapse in">
+                <ol>
+                <?php
+ foreach($c['modu'] as $i=>$v){ echo "<br/><li>".$v."</li>"; } ?>
+                </ol> 
+                <p>学科操作： <a href="/manage/index.php/Admin/Cat/edt/id/<?php echo ($c["id"]); ?>">编辑</a>&nbsp;&nbsp; &nbsp;&nbsp;<a href="/manage/index.php/Admin/Cat/del/id/<?php echo ($c["id"]); ?>">删除</a></p>
+            </div>
+        </div><?php endforeach; endif; else: echo "" ;endif; ?>
     </div>
 </div>
 </div>
@@ -149,8 +151,8 @@
 <div>
     <footer>
         <hr>
-            <p align="center">&copy; 2015 <a href="#">内容事业部</a>&nbsp;&nbsp;Copy right@ <a href="http://www.ulearn.cn/" title="文华在线" target="_blank">文华在线</a> </p>
-    </footer>
+            <p align="center">&copy; 2015 <a href="#">内容事业部</a>&nbsp;&nbsp;Copy right@ <a href="http://www.ulearn.cn/" title="文华在线" target="_blank">文华在线</a> </p>        
+    </footer>	
 </div>
 
     <!-- Le javascript

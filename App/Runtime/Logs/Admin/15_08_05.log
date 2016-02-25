@@ -1,0 +1,90 @@
+[ 2015-08-05T09:12:28+08:00 ] 127.0.0.1 /manage/index.php/Admin/Index/javascripts/graphDemo.js
+ERR: 非法操作:javascripts
+
+[ 2015-08-05T09:12:28+08:00 ] 127.0.0.1 /manage/index.php/Admin/Index/lib/jqplot/jquery.jqplot.min.js
+ERR: 非法操作:lib
+
+[ 2015-08-05T10:38:36+08:00 ] 127.0.0.1 /manage/index.php/Admin/index/lib/jqplot/jquery.jqplot.min.js
+ERR: 非法操作:lib
+
+[ 2015-08-05T10:38:36+08:00 ] 127.0.0.1 /manage/index.php/Admin/index/javascripts/graphDemo.js
+ERR: 非法操作:javascripts
+
+[ 2015-08-05T10:39:16+08:00 ] 127.0.0.1 /manage/index.php/Admin/index/lib/jqplot/jquery.jqplot.min.js
+ERR: 非法操作:lib
+
+[ 2015-08-05T10:39:17+08:00 ] 127.0.0.1 /manage/index.php/Admin/index/javascripts/graphDemo.js
+ERR: 非法操作:javascripts
+
+[ 2015-08-05T10:39:23+08:00 ] 127.0.0.1 /manage/index.php/Admin/index/lib/jqplot/jquery.jqplot.min.js
+ERR: 非法操作:lib
+
+[ 2015-08-05T10:39:23+08:00 ] 127.0.0.1 /manage/index.php/Admin/index/javascripts/graphDemo.js
+ERR: 非法操作:javascripts
+
+[ 2015-08-05T10:39:34+08:00 ] 127.0.0.1 /manage/index.php/Admin/index/javascripts/graphDemo.js
+ERR: 非法操作:javascripts
+
+[ 2015-08-05T10:39:34+08:00 ] 127.0.0.1 /manage/index.php/Admin/index/lib/jqplot/jquery.jqplot.min.js
+ERR: 非法操作:lib
+
+[ 2015-08-05T10:39:36+08:00 ] 127.0.0.1 /manage/index.php/Admin/index/javascripts/graphDemo.js
+ERR: 非法操作:javascripts
+
+[ 2015-08-05T10:39:36+08:00 ] 127.0.0.1 /manage/index.php/Admin/index/lib/jqplot/jquery.jqplot.min.js
+ERR: 非法操作:lib
+
+[ 2015-08-05T10:40:09+08:00 ] 127.0.0.1 /manage/index.php/Admin/index/javascripts/graphDemo.js
+ERR: 非法操作:javascripts
+
+[ 2015-08-05T10:40:09+08:00 ] 127.0.0.1 /manage/index.php/Admin/index/lib/jqplot/jquery.jqplot.min.js
+ERR: 非法操作:lib
+
+[ 2015-08-05T10:40:09+08:00 ] 127.0.0.1 /manage/index.php/Admin/index/lib/jqplot/jquery.jqplot.min.js
+ERR: 非法操作:lib
+
+[ 2015-08-05T10:40:09+08:00 ] 127.0.0.1 /manage/index.php/Admin/index/javascripts/graphDemo.js
+ERR: 非法操作:javascripts
+
+[ 2015-08-05T10:40:25+08:00 ] 127.0.0.1 /manage/index.php/Admin/index/lib/jqplot/jquery.jqplot.min.js
+ERR: 非法操作:lib
+
+[ 2015-08-05T10:40:25+08:00 ] 127.0.0.1 /manage/index.php/Admin/index/javascripts/graphDemo.js
+ERR: 非法操作:javascripts
+
+[ 2015-08-05T10:40:34+08:00 ] 127.0.0.1 /manage/index.php/Admin/index/lib/jqplot/jquery.jqplot.min.js
+ERR: 非法操作:lib
+
+[ 2015-08-05T10:40:34+08:00 ] 127.0.0.1 /manage/index.php/Admin/index/javascripts/graphDemo.js
+ERR: 非法操作:javascripts
+
+[ 2015-08-05T10:40:35+08:00 ] 127.0.0.1 /manage/index.php/Admin/index/lib/jqplot/jquery.jqplot.min.js
+ERR: 非法操作:lib
+
+[ 2015-08-05T10:40:35+08:00 ] 127.0.0.1 /manage/index.php/Admin/index/javascripts/graphDemo.js
+ERR: 非法操作:javascripts
+
+[ 2015-08-05T10:40:36+08:00 ] 127.0.0.1 /manage/index.php/Admin/index/javascripts/graphDemo.js
+ERR: 非法操作:javascripts
+
+[ 2015-08-05T10:40:36+08:00 ] 127.0.0.1 /manage/index.php/Admin/index/lib/jqplot/jquery.jqplot.min.js
+ERR: 非法操作:lib
+
+[ 2015-08-05T10:41:31+08:00 ] 127.0.0.1 /manage/index.php/Admin/index/lib/jqplot/jquery.jqplot.min.js
+ERR: 非法操作:lib
+
+[ 2015-08-05T10:41:31+08:00 ] 127.0.0.1 /manage/index.php/Admin/index/javascripts/graphDemo.js
+ERR: 非法操作:javascripts
+
+[ 2015-08-05T14:17:37+08:00 ] 127.0.0.1 /manage/index.php/Admin/Index/lib/jqplot/jquery.jqplot.min.js
+ERR: 非法操作:lib
+
+[ 2015-08-05T14:17:37+08:00 ] 127.0.0.1 /manage/index.php/Admin/Index/javascripts/graphDemo.js
+ERR: 非法操作:javascripts
+
+[ 2015-08-05T14:38:27+08:00 ] 127.0.0.1 /manage/index.php/Admin/Course/set
+ERR: 非法操作:set
+
+[ 2015-08-05T14:51:31+08:00 ] 127.0.0.1 /manage/index.php/Admin/Course/add
+ERR: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') AND (  ) AND (  ) AND (  ) AND (  )' at line 1
+

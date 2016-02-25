@@ -57,9 +57,18 @@
 	        <div class="navbar-inner">
 	            <div class="container-fluid">
 	                <ul class="nav pull-right">
-	                    <li id="fat-menu" class="paragraph">
-                                <?php echo $_SESSION['user']['name'];?>
-	                        
+	                    
+	                    <li id="fat-menu" class="dropdown">
+	                        <a href="#" id="drop3" role="button" class="dropdown-toggle" data-toggle="dropdown">
+	                            <i class="icon-user"></i> Jack Smith
+	                            <i class="icon-caret-down"></i>
+	                        </a>
+
+	                        <ul class="dropdown-menu">
+	                            <li><a tabindex="-1" href="#">Settings</a></li>
+	                            <li class="divider"></li>
+	                            <li><a tabindex="-1" href="sign-in.html">Logout</a></li>
+	                        </ul>
 	                    </li>
 	                    
 	                </ul>
@@ -73,29 +82,33 @@
 	    <div class="row-fluid">
 		            <div class="span3">
 		                <div class="sidebar-nav">
-                                    <div class="nav-header" data-toggle="collapse" data-target="#dashboard-menu"><i class="icon-dashboard"></i>课程</div>
+                                    <div class="nav-header" data-toggle="collapse" data-target="#dashboard-menu"><i class="icon-dashboard"></i>课程&学科</div>
                                   <ul id="dashboard-menu" class="nav nav-list collapse in">
-                                      
+                                      <li ><a href="/manage/index.php/Admin/Course/add">添加课程</a></li>
                                       <li><a href="/manage/index.php/Admin/Course/index">课程管理</a></li>
-
-                                      <li ><a href="/manage/index.php/Admin/Cat/index">课程分类</a></li>
-                                      <li ><a href="/manage/index.php/Admin/Course/set">课程设置</a></li>
-                                      <li><a href="/manage/index.php/Admin/Course/work">课程统计</a></li>
+                                      <li><a href="/manage/index.php/Admin/Cat/add">添加学科</a></li>
+                                      <li ><a href="/manage/index.php/Admin/Cat/index">学科分类</a></li>
+                                      
                                   </ul>
-                                    
+                                    <div class="nav-header" data-toggle="collapse" data-target="#dashboard-menu"><i class="icon-dashboard"></i>工作</div>
+                                <ul id="dashboard-menu" class="nav nav-list collapse in">
+                                <li><a href="index.html">周统计</a></li>
+                                <li ><a href="users.html">月统计</a></li>
+                               
+                                </ul>
                                     <div class="nav-header" data-toggle="collapse" data-target="#dashboard-menu"><i class="icon-dashboard"></i>&nbsp;人事</div>
                                   <ul id="dashboard-menu" class="nav nav-list collapse in">
-                                    
+                                       <li><a href="/manage/index.php/Admin/User/add">添加人员</a></li>
                                       <li><a href="/manage/index.php/Admin/User/index">人员管理</a></li>
-                                      <li ><a href="/manage/index.php/Admin/User/dep">部门列表</a></li>
+                                      <li ><a href="/manage/index.php/Admin/Gp/index">部门管理</a></li>
                                       
                                   </ul>
                                   
 		                <div class="nav-header" data-toggle="collapse" data-target="#accounts-menu"><i class="icon-briefcase"></i>账户<span class="label label-info">+10</span></div>
 		                <ul id="accounts-menu" class="nav nav-list collapse in">
-                                   
-		                  <li ><a href="/manage/index.php/Admin/Index/ext">退出</a></li>
-		                  <li ><a href="/manage/index.php/Admin/User/reset">密码重置</a></li>
+                                    <li ><a href="sign-in.html">登录</a></li>
+		                  <li ><a href="sign-up.html">退出</a></li>
+		                  <li ><a href="reset-password.html">密码重置</a></li>
 		                </ul>
 
 		                <div class="nav-header" data-toggle="collapse" data-target="#legal-menu"><i class="icon-legal"></i>权限</div>
@@ -104,29 +117,28 @@
 		                  <li ><a href="terms-and-conditions.html">Terms and Conditions</a></li>
 		                </ul>
                                 
-                                 
+                                 <div class="nav-header" data-toggle="collapse" data-target="#settings-menu"><i class="icon-exclamation-sign"></i>Error Pages</div>
+		                <ul id="settings-menu" class="nav nav-list collapse in">
+		                  <li ><a href="403.html">403 page</a></li>
+		                  <li ><a href="404.html">404 page</a></li>
+		                  <li ><a href="500.html">500 page</a></li>
+		                  <li ><a href="503.html">503 page</a></li>
+		                </ul>
 		            </div>
         </div>
 <div class="span9">
     <h2><?php echo ($cou); ?></h2>
     <div class="row-fluid">
         <div class="block">
-            <p class="block-heading" data-toggle="collapse" data-target="#chart-container"><a href='/manage/index.php/Admin/Course/index'>课程</a>-》<a href='/manage/index.php/Admin/Chapter/index/co/<?php echo ($mo["ch_id"]); ?>'>章</a>-》模块管理
+            <p class="block-heading" data-toggle="collapse" data-target="#chart-container"><a href='/manage/index.php/Admin/Course/index'>课程</a>-》<a href='/manage/index.php/Admin/Course/index'>章</a>-》模块管理
                 <button id="btn" style="float: right;" > 添加 </button>
             </p>
-            <div  class="block-body collapse in">
+            <div id="chart-container" class="block-body collapse in">
                 <form action='/manage/index.php/Admin/Modu/up' method='post'>
                     <br/>
-                     <div class="form-group">
-                         模块：
-                         <input style="height:30px;" type="text" name="mo_name"  value="<?php echo ($mo["mo_name"]); ?>"/>
-                     </div>
-                    <div class="form-group">
-                         负责人：<input type="text" style="height:30px;"  name="mo_manager"  value="<?php echo ($mo["mo_manager"]); ?>"/>
-                     </div>
-                    <div class="form-group">
-                         进度： <input type="range" value="0" step="10" id="range" style="width: 15% ;height: 30px;"  title="" name="co_process" min="0" max="100" /><span id="pro"></span>
-                     </div>
+                模块：<input type="text" name="mo_name"  value="<?php echo ($mo["mo_name"]); ?>"/><br/>
+                负责人：<input type="text" name="mo_manager"  value="<?php echo ($mo["mo_manager"]); ?>"/><br/>
+                进度：<input type="text" name="mo_pro"  value="<?php echo ($mo["mo_pro"]); ?>"/><br/>
                 <input type="hidden" name="mo_id"  value="<?php echo ($mo["mo_id"]); ?>"/>
                 <input type="hidden" name="co_id"  value="<?php echo ($mo["co_id"]); ?>"/>
                 <input type="hidden" name="ch_id"  value="<?php echo ($mo["ch_id"]); ?>"/>
@@ -136,14 +148,6 @@
         </div>
     </div>
 </div>
-<script>                  
-    //设置input 进度的值
-                    var $pro = $("#range");
-                    $pro.mouseout(function () {
-                            $("#pro").empty();
-                            $("#pro").append($pro.val() + '%');
-                        });
-</script>
 </div>
 </div>
 	   <!--foot-->

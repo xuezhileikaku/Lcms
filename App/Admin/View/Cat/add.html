@@ -5,17 +5,61 @@
     <p class="block-heading" data-toggle="collapse" data-target="#chart-container" align='center'>学科编辑</p>
     <div class="block span8">
         <form action="__APP__/index.php/Admin/Cat/addUp" method="post"  >
-
+           
             <div class="block-heading" data-toggle="collapse" data-target="#tablewidget"> 
                 学科：<input type="text" name="cat_name" style="width: 13%;" placeholder="名称" />
-
+                负责部门：<select name="cat_dep" style="width: 13%;">
+                            <option>请选择</option>
+                        <volist name="dep" key="k" id="dp">
+                            <option value="{$k}">{$dp}</option>
+                        </volist>
+                    </select>
+                <button id="addmo" type="button"  class="btn-info" style="float: right;">添加模块</button>
             </div>
-            <div id="tablewidget" class="block-body collapse in">
-                介绍：<input type="text" class="modu_name" name="cat_intro" style="width: 13%;" placeholder="描述" /><br/>
+                <div id="tablewidget" class="block-body collapse in">
+                    <ol id="ol"> 
+                        <li>模块：<input type="text" class="modu_name" name="modu_name[]" style="width: 13%;" placeholder="名称" /><br/>
+                             负责部门：<select class="modu_dep" name="modu_dep[]" style="width: 13%;">
+                                        <volist name="dep" key="k" id="dp">
+                                            <option value="{$k}">{$dp}</option>
+                                        </volist>
+                                       </select>
+                        </li>
+                    </ol>
+                </div>
+            &nbsp; &nbsp; &nbsp;<button class="btn-success" id="sub" >提交</button>
 
-                &nbsp; &nbsp; &nbsp;<button class="btn-success" id="sub" >提交</button>
-            </div>
         </form>
     </div>
 </div>
+<script>
+             /* $.ajax({
+            type: "post",//使用get方法访问后台
+            dataType: "json",//返回json格式的数据
+            url: "__AP__/index.php/Admin/Cat/add",//要访问的后台地址
+            data: "pageIndex=" + pageIndex,//要发送的数据
+            complete :function(){$("#load").hide();},//AJAX请求完成时隐藏loading提示
+            success: function(msg){//msg为返回的数据，在这里做数据绑定
+                var data = msg.table;
+                $.each(data, function(i, n){
+                    var row = $("#template").clone();
+                    row.find("#OrderID").text(n.订单ID);
+                    row.find("#CustomerID").text(n.客户ID);
+                    row.find("#EmployeeID").text(n.雇员ID);
+                    row.find("#OrderDate").text(ChangeDate(n.订购日期));
+                    if(n.发货日期!== undefined) row.find("#ShippedDate").text(ChangeDate(n.发货日期));
+                    row.find("#ShippedName").text(n.货主名称);
+                    row.find("#ShippedAddress").text(n.货主地址);
+                    row.find("#ShippedCity").text(n.货主城市);
+                    row.find("#more").html("<a href=OrderInfo.aspx?id=" + n.订单ID + "&pageindex="+pageIndex+">&nbsp;More</a>");                    
+                    row.attr("id","ready");//改变绑定好数据的行的id
+                    row.appendTo("#datas");//添加到模板的容器中
+                });*/
+                
+           $("#addmo").click(function(){
+               var op=$(".modu_dep").eq(0).html();
+                $("#ol").append("<li>模块：<input type='text' name='modu_name[]' style='width: 13%;' placeholder='名称' /><br/>负责部门：<select class='modu_dep' name='modu_dep[]' style='width: 13%;'>"+op+"</select></li>"); 
+           });
+            
+</script>
 <include file="Public/foot" />

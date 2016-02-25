@@ -5,144 +5,154 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 namespace Admin\Controller;
 use Think\Controller;
 class ModuController extends Controller {
-//模块列表
-    public function index() {
-        //课程id
-        $c['co'] = $_GET['co'];
-        $c['ch'] = $_GET['ch'];
-        //章节ID
-        $where = "ch_id=" . $_GET['ch'];
-        //模块实例化
-        $m = M("Modu");
-        //根据章节ID获取模块信息
-        $tmp = $m->where($where)->select();
+    public function index(){
+        $co=$_GET['co'];
+        $id=$_GET['ch'];
+        $m=M("Modu");
+        $arr=$this->getDep($co);
+        $tmp=$m->where("ch_id=$id")->select();
         //获取用户
-        $gp = $this->getUser();
-        foreach ($tmp as $k => $v) {
-            //格式化模块
-            $data[$k]['mo_id'] = (int) $v['mo_id'];
-            $data[$k]['mo_name'] = $v['mo_name'];
-            $data[$k]['mo_manager'] = $gp[$v['mo_manager']];
-            if($v['mo_stats']){
-                $data[$k]['mo_stats'] ="完成";
-            }else{
-                $data[$k]['mo_stats'] ="进行中";
+        dump($tmp);
+        $gp=  $this->getUser();
+        if(empty($tmp)){
+            redirect("../../../../set/co/$co/ch/$id");
+        }else{
+             foreach ($tmp as $k=> $v) {
+                $data['mo_id']=(int)$tmp['mo_id'];
+                $data['co_id']=(int)$tmp['co_id'];
+                $data['ch_id']=(int)$tmp['ch_id'];
+                $data['co_name']=$tmp['co_name'];
+                $data['co_manager']=$gp[$tmp['co_manager']];
+                echo $tmp['mo_time_s'];
+                $data['mo_time_s']= date("Y-m-d H:i:s",$tmp['mo_time_s']);
             }
-            $data[$k]['mo_pro'] = (int) $v['mo_pro'];
-            $data[$k]['mo_time_s'] =  date("Y-m-d",$v['mo_time_s']);
+            echo time();
+            echo date("Y-m-d H:i:s",'1438943674');
+            dump($data);
+            $this->assign('mo',$data);
+            $this->display();
         }
-        
-        // dump($data);
-        $this->assign('cho', $c);
-        $this->assign('mo', $data);
+    }
+    //设置模块
+    public function set(){
+        $co=$_GET['co'];
+        $id=$_GET['ch'];
+        $m=M("Modu");
+        //通过课程获取部门
+        $arr=$this->getDep($co);
+        //获取模块下可选择的人员
+        $gp=  $this->getUser();
+        foreach ($arr as $k=> $v) {
+            $data[$k]['mo']=$v['mo'];
+            $data[$k]['se']=$gp[$v['dep']];
+        }
+        $this->assign("mo",$data);
         $this->display();
     }
-
-    
-
-    //添加模块
-    public function add() {
-          //课程id
-        $c['co'] = $_GET['co'];
-        $c['ch'] = $_GET['ch'];
-        $this->assign('cho',$c);
-        $this->display();
-    }
-    //接收添加数据
-    public function addUp() {
-         //课程id
-        $c['co'] = $_GET['co'];
-        $c['ch'] = $_GET['ch'];
-        
-        $m = M('Modu');
-        //获取部门
-        //接收回传的数据
-        $data['co_id'] = (int) $_POST['co_id'];
-        $data['ch_id'] = (int) $_POST['ch_id'];
-        $data['mo_name'] = $_POST['mo_name'];
-        $data['mo_manager'] = (int) $_POST['mo_manager'];
-        $data['mo_pro'] = (int) $_POST['mo_pro'];
-        $data['mo_time_s'] = time();
-
-        $re = $m->add($data);
-        if ($re) {
-            $this->success('添加成功', "index/co/{$data['co_id']}/ch/{$data['ch_id']}");
-        } else {
+    //
+    public function setUp() { 
+        $co=$_POST['cid'];
+        $ch=$_POST['hid'];
+        foreach ($_POST['mo_manager'] as $k => $v) {
+            $datlist[$k]['mo_manager']=$v;
+            $datlist[$k]['mo_name']=$_POST['mo_name'][$k];
+            $datlist[$k]['co_id']=$_POST['cid'];
+            $datlist[$k]['ch_id']=$_POST['hid'];
+            $datlist[$k]['mo_pro']=1;
+            $datlist[$k]['mo_time_s']=time();
+        } 
+        $m=M("Modu");
+        $re=$m=M("Modu")->addAll($datlist);
+        if($re){
+            $this->success('添加成功', "index/co/$co/ch/$ch");
+        }  else {
             $this->error('添加失败');
         }
     }
-
+    //添加模块
+    public function add() {
+         $m=M('modu'); 
+        //获取部门
+       
+       //接收回传的数据
+        $data['co_id']=(int)$_POST['co_id'];
+        $data['ch_id']=(int)$_POST['ch_id'];
+        $data['mo_name']=$_POST['mo_name'];
+        $data['mo_manager']=(int)$_POST['mo_manager']; 
+        $data['mo_pro']=(int)$_POST['mo_pro'];
+        $data['mo_time_s']=$_POST['mo_time_s'];
+        $data['mo_time_e']=$_POST['mo_time_e'];
+       
+        $re=$m->add($data);
+        if($re){
+            $this->success('添加成功', "index/co/{$data['co_id']}/ch/{$data['ch_id']}");
+        }  else {
+            $this->error('添加失败');
+        }
+    }
     //编辑模块
     public function edt() {
-        $m = M('modu');
-        $id = $_GET['id'];
-      
-        $user = $this->getUser();
-        //获取编辑的模块数据
-        foreach ($m->where("mo_id=$id")->find() as $k => $v) {
-         
-            if ($k == 'mo_manager') {
-                
-                $data['mo_manager'] = $user[$v];
-            } elseif($k == 'mo_time_s'){
-            
-                $data['mo_time_s']=date("Y-m-d",$v);
-            }else{
-                $data[$k] = $v;
-            }
-        }
-        $this->assign('mo', $data);
-        $this->display();
+         $m=M('modu');
+         $id=$_GET['id'];
+         $data=$m->where("mo_id=$id")->find();
+         $this->assign('mo',$data);
+         $this->display();
     }
-
     //删除模块
     public function del() {
-       
-        $id = $_GET['id'];
-        $m = M('modu');
-       $d= $m->where("mo_id=$id")->find();
-        $re = $m->delete($id);
-        if ($re) {
-            $this->success('删除成功', "../../index/co/{$d['co_id']}/ch/{$d['ch_id']}");
-        } else {
+         
+         $ch=$_GET['ch'];
+         $co=$_GET['co'];
+         $id=$_GET['id'];
+         $m=M('modu');
+        $re=$m->delete($id);
+        if($re){
+            $this->success('删除成功', "../../../../../../index/co/{$co}/ch/{$ch}");
+        }  else {
             $this->error('删除失败');
         }
     }
-
     //接收更新的数据
     public function up() {
-        $where ="mo_id=".$_POST['mo_id'];
-        $data['co_id'] = (int) $_POST['co_id'];
-        $data['ch_id'] = (int) $_POST['ch_id'];
-        $data['mo_name'] = $_POST['mo_name'];
-        $data['mo_manager'] = (int) $_POST['mo_manager'];
-        $data['mo_pro'] = (int) $_POST['mo_pro'];
-        if( $data['mo_pro']==100){
-            $data['mo_stas']=1;
-        }else{
-            $data['mo_stas']=0;
-        }
+        $id=(int)$_POST['mo_id'];
+        $data['co_id']=(int)$_POST['co_id'];
+        $data['ch_id']=(int)$_POST['ch_id'];
+        $data['mo_name']=$_POST['mo_name'];
+        $data['mo_manager']=(int)$_POST['mo_manager']; 
+        $data['mo_pro']=(int)$_POST['mo_pro'];
+        //$data['mo_time_s']=$_POST['mo_time_s'];
         //$data['mo_time_e']=$_POST['mo_time_e'];
-        $m = M('modu');
-        $re = $m->where($where)->save($data);
-        if ($re) {
+        $m=M('modu');
+        $re=$m->where("mo_id=$id")->save($data);
+        if($re){
             $this->success('更新成功', "index/co/{$data['co_id']}/ch/{$data['ch_id']}");
-        } else {
+        }  else {
             $this->error('更新失败');
         }
     }
-
-    //根据id 获取人员
-    public function getUser() {
-        $u = M("user");
-        foreach ($u->select() as $k => $v) {
-            $data[$v['u_id']] = $v['u_real_name'];
+    
+    //获取模块h和对应的部门
+    public function getDep($co) {
+        //根据课程id获取分类id
+        $course=M("course");
+        $ca=$course->where("co_id=$co")->getField('co_cat');
+        //根据课程分类获取模块
+        $cat=M("cat");
+        $mo=$cat->where("cat_id=$ca")->getField('cat_modu');
+        foreach (explode(',', $mo) as $k => $v) {
+            list($arr[$k]['mo'],$arr[$k]['dep'])=  explode(":",$v);
+        }
+        return $arr;
+    }
+    //根据部门获取对应的人员
+    public function getUser(){
+        $u=M("user");
+        foreach ($u->select() as $k=> $v) {
+            $data[$v['u_pos']][$v['u_id']]=$v['u_name'];
         }
         return $data;
     }
-
 }
